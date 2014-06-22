@@ -28,10 +28,10 @@ testData <- validData[-trainIndex,]
 #find unuseful predicitors
 nsv <- nearZeroVar(trainData,saveMetrics=TRUE)
 nsv
-# correlated predictors (PCA)
-#M <- abs(cor(trainData[,-55]))
-#diag(M) <- 0
-#which(M > 0.88,arr.ind=T)
+ correlated predictors (PCA)
+M <- abs(cor(trainData[,-55]))
+diag(M) <- 0
+which(M > 0.88,arr.ind=T)
 # discards unuseful predictors
 removeIndex <- grep("timestamp|X|user_name|new_window|num_window",names(trainData))
 trainData <- trainData[,-removeIndex]
